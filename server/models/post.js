@@ -12,6 +12,10 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: [true, 'Description is required']
         },
+        views: {
+            type: Number,
+            default: 0
+        },
         imageUrl: {
             type: String,
             required: [true, 'Image is required']
