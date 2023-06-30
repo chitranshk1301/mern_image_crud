@@ -1,8 +1,11 @@
 import React from 'react';
+import LoginForm from './pages/login';
+import SignupForm from './pages/signup';
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <LoginForm />
+      <SignupForm />
     </div>
   );
 }
