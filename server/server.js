@@ -2,11 +2,13 @@ const express = require('express');
 const morgan = require('morgan');
 const app = express();
 const dotenv = require('dotenv');
+const cors = require('cors');
 const { protect } = require('./auth/auth');
 const { createNewUser, signin } = require('./controllers/user');
 
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(cors());
 dotenv.config();
 const port = process.env.PORT || 3000;
 
