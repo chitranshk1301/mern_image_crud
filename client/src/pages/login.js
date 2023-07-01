@@ -11,6 +11,15 @@ const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        if(username === '' || password === ''){
+            alert('Please enter a username and password');
+        }
+        handleLogin();
+    };
+
     const handleLogin = () => {
         axios.post(url, {
             username: username,
@@ -25,6 +34,13 @@ const LoginForm = () => {
             .catch((err) => {
                 console.log(err);
             })
+            .then(() => {
+                if(localStorage.getItem('token')){
+                    window.location.href = '/home';
+                }    
+            })
+        
+
     };
 
 
@@ -43,7 +59,7 @@ const LoginForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     type="password"
                 />
-                <Button variant="outlined" size="large" onClick={handleLogin}>Login</Button>
+                <Button variant="outlined" size="large" onClick={handleClick}>Login</Button>
                 <p>Don't have an account? <Link className='text-blue-500' to="/signup">Sign-Up!</Link></p>
             </form>
         </div>

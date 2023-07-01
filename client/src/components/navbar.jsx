@@ -28,10 +28,16 @@ export default function Navbar() {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         <Link to="/home">Images CRUD app</Link>
                     </Typography>
+
                     {isAuthenticated ? (
-                        <Button variant='outlined' color="inherit" onClick={handleLogout}>
-                            Logout
-                        </Button>
+                        <div>
+                            <Button variant='filled' href='/createPost'>
+                                Create new post
+                            </Button>
+                            <Button variant='outlined' color="inherit" onClick={handleLogout}>
+                                Logout
+                            </Button>
+                        </div>
                     ) : (
                         <Button variant='filled' href='/login'>
                             Login

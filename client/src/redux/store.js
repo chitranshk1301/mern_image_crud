@@ -1,6 +1,7 @@
-import { configureStore, applyMiddleware, combineReducers } from 'redux';
+import { applyMiddleware, combineReducers } from 'redux';
+import { configureStore } from "@reduxjs/toolkit";
 import thunk from 'redux-thunk';
-import imageReducer from './imageReducer';
+import imageReducer from './reducer';
 
 const rootReducer = combineReducers({
   image: imageReducer

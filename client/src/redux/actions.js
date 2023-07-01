@@ -9,7 +9,7 @@ const url = 'http://localhost:3000/api/';
 // Action creators
 export const fetchImages = () => {
     return (dispatch) => {
-        axios.get(`${url}/posts`)
+        axios.get(`${url}/posts`, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
             .then((response) => {
                 dispatch({
                     type: FETCH_IMAGES,
@@ -24,7 +24,7 @@ export const fetchImages = () => {
 
 export const addImage = (imageData) => {
     return (dispatch) => {
-        axios.post(`${url}/post`, imageData)
+        axios.post(`${url}/post`, imageData, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
             .then((response) => {
                 dispatch({
                     type: ADD_IMAGE,
