@@ -1,4 +1,4 @@
-import { FETCH_IMAGES, ADD_IMAGE, GET_IMAGE_BY_ID } from './actions';
+import { FETCH_IMAGES, ADD_IMAGE, GET_IMAGE_BY_ID } from './imageActions';
 
 const initialState = {
   images: [],
