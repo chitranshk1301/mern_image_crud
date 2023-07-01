@@ -1,6 +1,7 @@
 import React from 'react'
 import { TextField, Button } from '@mui/material';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const url = 'http://localhost:3000';
 
@@ -9,30 +10,28 @@ const CreatePost = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const navigate = useNavigate();
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-    setFileName(selectedFile ? selectedFile.name : '');
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    setFileName(file ? file.name : '');
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const formData = new FormData();
-    formData.append('file', selectedFile);
+    formData.append('image', selectedFile);
     formData.append('title', title);
     formData.append('description', description);
 
-    const res = await fetch(`${url}/api/post`, {
+  await fetch(`${url}/api/post`, {
       method: 'POST',
       body: formData,
-    },
-    { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } } 
-    );
-    const data = await res.json();
-    console.log(data);
-    
-    if (data.success) {
-      window.location.href = '/home';
-    }
+      headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
+    })
+    .then(res => res.json() && navigate('/home'))
+    .catch(err => console.log(err))
   }
 
   return (
@@ -46,7 +45,7 @@ const CreatePost = () => {
                 <input className="text-sm cursor-pointer w-36 hidden" type="file" accept="image/*" onChange={handleFileChange} />
                 <div className="text bg-indigo-600 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-indigo-500">Select</div>
               </label>
-              
+
               <div className='border p-1 min-h-[20px] min-w-[200px] max-w-[220px] bg-gray-200 mt-2'>
                 {fileName && <p className='font-bold'>Selected file: {fileName}</p>}
               </div>
@@ -66,7 +65,7 @@ const CreatePost = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <Button variant="contained" size='large' onClick={handleSubmit}>Submit</Button>
+        <Button variant="contained" type='submit' size='large' onClick={handleSubmit}>Submit</Button>
       </form>
     </div>
   )
