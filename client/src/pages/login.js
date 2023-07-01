@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const url = 'http://127.0.0.1:3000/signin';
@@ -26,8 +27,8 @@ const LoginForm = () => {
 
     return (
         <div>
-            <h1>Login</h1>
-            <form>
+            <form className='h-screen flex flex-col gap-6 items-center pt-32'>
+                <h1 className='text-gray text-4xl font-bold'>Login</h1>
                 <TextField
                     label="Username"
                     value={username}
@@ -39,9 +40,9 @@ const LoginForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     type="password"
                 />
-                <Button onClick={handleLogin}>Login</Button>
+                <Button variant="outlined" size="large" onClick={handleLogin}>Login</Button>
+                <p>Don't have an account? <Link className='text-blue-500' to="/signup">Sign-Up!</Link></p>
             </form>
-            <p>Don't have an account? <a href="/signup">Sign up</a></p>
         </div>
     );
 };

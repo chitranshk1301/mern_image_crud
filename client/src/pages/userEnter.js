@@ -13,10 +13,10 @@ const UserEnter = () => {
                 <div className='flex items-center pt-10'>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         <Grid item xs={6}>
-                            <Item><Button variant="contained" href="/login">Login</Button></Item>
+                            <Item><Button variant="outlined" size="large" href="/login">Login</Button></Item>
                         </Grid>
                         <Grid item xs={6}>
-                            <Item><Button variant="contained" href="/signup">Signup</Button></Item>
+                            <Item><Button variant="outlined" size="large" href="/signup">Signup</Button></Item>
                         </Grid>
                     </Grid>
                 </div>
