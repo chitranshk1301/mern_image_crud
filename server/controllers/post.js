@@ -25,7 +25,7 @@ const getPostById = async (req, res) => {
     const post = await Post.findById(req.params.id);
     post.views += 1;
     await post.save();
-    res.json(post);
+    res.json(post.views);
 }
 
 
