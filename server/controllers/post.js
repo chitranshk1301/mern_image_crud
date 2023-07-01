@@ -7,6 +7,9 @@ const getAllPosts = async (req, res) => {
 }
 
 const createPost = async (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
     const result = await cloudinary.uploader.upload(req.file.path);
     const post = new Post({
         title: req.body.title,
