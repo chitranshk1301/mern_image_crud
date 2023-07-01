@@ -37,7 +37,7 @@ const SignupForm = () => {
           onChange={(e) => setPassword(e.target.value)}
           type="password"
         />
-        <Button onClick={handleSignup}>Login</Button>
+        <Button onClick={handleSignup}>Sign Up</Button>
       </form>
       <p> Already have an account? <a href="/login">Login</a></p>
     </div>
