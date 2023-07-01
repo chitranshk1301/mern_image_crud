@@ -11,11 +11,15 @@ const url = `${base}/api/posts`;
 const PostList = () => {
     
     const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios.get(`${url}`, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
             .then((response) => {
                 setPosts(response.data);
+            })
+            .then( () => {
+                setLoading(false);
             })
             .catch((error) => {
                 console.log(error);
@@ -24,6 +28,7 @@ const PostList = () => {
 
     return (
         <div className="mt-20 mx-20 md:mx-60">
+            {loading && <div>Loading...</div>}
             <Grid container gap={6} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 {posts.map((post) => {
 
