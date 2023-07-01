@@ -3,7 +3,9 @@ import { TextField, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const url = `${process.env.BASE_URL}/user`;
+// const base = process.env.BASE_URL;
+const base = 'https://mern-image-api.onrender.com';
+const url = `${base}/user`;
 
 const SignupForm = () => {
   const [username, setUsername] = useState('');
@@ -11,7 +13,7 @@ const SignupForm = () => {
 
   const handleSignup = () => {
     axios
-      .post(`${url}`, {
+      .post(url, {
         username: username,
         password: password,
       })

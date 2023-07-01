@@ -5,8 +5,9 @@ import axios from "axios";
 import { Grid } from "@mui/material";
 import Item from "@mui/material/Grid";
 
-
-const url = `${process.env.BASE_URL}/api/posts`;
+// const base = process.env.BASE_URL;
+const base = 'https://mern-image-api.onrender.com';
+const url = `${base}/api/posts`;
 const PostList = () => {
     
     const [posts, setPosts] = useState([]);
