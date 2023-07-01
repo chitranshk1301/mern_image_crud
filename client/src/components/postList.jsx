@@ -5,7 +5,7 @@ import axios from "axios";
 import { Grid } from "@mui/material";
 import Item from "@mui/material/Grid";
 
-const url = process.env.BASE_URL || 'http://localhost:3000';
+const url = process.env.BASE_URL;
 
 const PostList = () => {
 

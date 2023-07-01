@@ -3,7 +3,7 @@ import { TextField, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const url = process.env.BASE_URL || 'http://localhost:3000';
+const url = process.env.BASE_URL;
 
 const SignupForm = () => {
   const [username, setUsername] = useState('');
