@@ -3,7 +3,7 @@ import { TextField, Button } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const url = process.env.BASE_URL;
+const url = `${process.env.BASE_URL}/api/post`;
 
 const CreatePost = () => {
   const [fileName, setFileName] = useState('');
@@ -25,7 +25,7 @@ const CreatePost = () => {
     formData.append('title', title);
     formData.append('description', description);
 
-  await fetch(`${url}/api/post`, {
+  await fetch(`${url}`, {
       method: 'POST',
       body: formData,
       headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }

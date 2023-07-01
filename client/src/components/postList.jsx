@@ -5,14 +5,14 @@ import axios from "axios";
 import { Grid } from "@mui/material";
 import Item from "@mui/material/Grid";
 
-const url = process.env.BASE_URL;
 
+const url = `${process.env.BASE_URL}/api/posts`;
 const PostList = () => {
-
+    
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios.get(`${url}/api/posts`, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
+        axios.get(`${url}`, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
             .then((response) => {
                 setPosts(response.data);
             })
