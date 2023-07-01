@@ -9,8 +9,9 @@ import Item from "@mui/material/Grid";
 const base = 'https://mern-image-api.onrender.com';
 const url = `${base}/api/posts`;
 const PostList = () => {
-    
+
     const [posts, setPosts] = useState([]);
+    const [views, setViews] = useState(0);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -18,13 +19,24 @@ const PostList = () => {
             .then((response) => {
                 setPosts(response.data);
             })
-            .then( () => {
+            .then(() => {
                 setLoading(false);
             })
             .catch((error) => {
                 console.log(error);
             });
     }, []);
+
+    const handleView = (id) => {
+        axios.get(`${base}/api/post/:id`, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
+            .then((response) => {
+                setViews(views + 1);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
 
     return (
         <div className="mt-20 mx-20 md:mx-60">
@@ -39,6 +51,8 @@ const PostList = () => {
                                 title={post.title}
                                 description={post.description}
                                 image={post.imageUrl}
+                                count={post.views}
+                                handleClick={() => handleView(post._id)}
                             />
                         </Item>
                     );
