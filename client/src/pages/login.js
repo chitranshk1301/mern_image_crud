@@ -6,7 +6,7 @@ import axios from 'axios';
 // import { login } from '../redux/authActions';
 
 
-const url = 'http://127.0.0.1:3000/signin';
+const url = process.env.BASE_URL || 'http://localhost:3000';
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -21,7 +21,7 @@ const LoginForm = () => {
     };
 
     const handleLogin = () => {
-        axios.post(url, {
+        axios.post(`${url}/signin`, {
             username: username,
             password: password
         })

@@ -3,7 +3,7 @@ import { TextField, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const url = 'http://localhost:3000/user';
+const url = process.env.BASE_URL || 'http://localhost:3000';
 
 const SignupForm = () => {
   const [username, setUsername] = useState('');
@@ -11,7 +11,7 @@ const SignupForm = () => {
 
   const handleSignup = () => {
     axios
-      .post(url, {
+      .post(`${url}/user`, {
         username: username,
         password: password,
       })

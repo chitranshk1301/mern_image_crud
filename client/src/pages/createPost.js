@@ -3,7 +3,7 @@ import { TextField, Button } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const url = 'http://localhost:3000';
+const url = process.env.BASE_URL || 'http://localhost:3000';
 
 const CreatePost = () => {
   const [fileName, setFileName] = useState('');
