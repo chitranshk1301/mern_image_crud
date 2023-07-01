@@ -9,7 +9,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export default function PostCard(props) {
   return (
-    <Card sx={{ maxWidth: 345 }} onClick={props.handleClick}>
+    <Card sx={{ maxWidth: 345 }} key={props.key} onClick={props.handleClick}>
       <CardActionArea>
         <CardMedia
           component="img"

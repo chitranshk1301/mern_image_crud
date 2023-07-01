@@ -23,6 +23,10 @@ const postSchema = new mongoose.Schema(
         cloudinary_id: {
             type: String,
             required: [true, 'Cloudinary ID is required']
+        },
+        views: {
+            type: Number,
+            default: 0
         }
     },
     {
